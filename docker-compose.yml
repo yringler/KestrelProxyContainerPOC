@@ -1,0 +1,6 @@
+﻿services:
+  kestrelproxycontainerpoc:
+    image: kestrelproxycontainerpoc
+    build:
+      context: .
+      dockerfile: KestrelProxyContainerPOC/Dockerfile
