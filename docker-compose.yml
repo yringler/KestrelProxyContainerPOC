@@ -1,6 +1,33 @@
 ﻿services:
-  kestrelproxycontainerpoc:
+  proxy:
+    image: proxy
+    build:
+      context: Proxy
+    ports:
+      - target: 8080
+        published: 8080
+    depends_on:
+      - b1
+      - b2
+      - b3
+      - b4
+  app:
     image: kestrelproxycontainerpoc
     build:
-      context: .
-      dockerfile: KestrelProxyContainerPOC/Dockerfile
+      context: KestrelProxyContainerPOC
+    networks:
+      net
+  b1:
+    extends:
+      service: app
+  b2:
+    extends:
+      service: app
+  b3:
+    extends:
+      service: app
+  b4:
+    extends:
+      service: app
+networks:
+  net:
