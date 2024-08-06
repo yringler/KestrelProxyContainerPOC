@@ -12,20 +12,6 @@ public class BranchTransformer : HttpTransformer
     {
         await base.TransformRequestAsync(httpContext, proxyRequest, destinationPrefix, cancellationToken);
 
-        var pathParts = httpContext.Request.Path.ToUriComponent().Split('/');
-
-        string? branch = pathParts.FirstOrDefault();
-
-        if (string.IsNullOrEmpty(branch))
-        {
-            return;
-        }
-        
-        string restOfPath = "/" + string.Join('/', pathParts.Skip(1)).TrimStart('/');
-        PathString.FromUriComponent(new Uri(restOfPath));
-
-        proxyRequest.RequestUri =
-            RequestUtilities.MakeDestinationAddress(branch, restOfPath,
-                httpContext.Request.QueryString);
+        // Don't reset the Host header.
     }
 }

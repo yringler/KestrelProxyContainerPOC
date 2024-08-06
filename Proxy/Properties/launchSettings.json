@@ -8,11 +8,11 @@
     }
   },
   "profiles": {
-    "Site2": {
+    "Run": {
       "commandName": "Project",
       "dotnetRunMessages": true,
       "launchBrowser": true,
-      "applicationUrl": "https://*:7244;http://*:5244",
+      "applicationUrl": "http://*:5244",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
